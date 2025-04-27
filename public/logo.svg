@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<svg width="240" height="200" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+ <g class="layer">
+  <title>Layer 1</title>
+  <path d="m11.02,15.4c-2.46,22.27 -6.7,46.93 3.38,78.44c-7.01,26.04 1.25,65.49 24.08,86.32c85.16,-59.91 162,-0.94 162,-0.94c7.38,-4.82 37.54,-52.88 23.46,-84.37c10.15,-50.34 5.04,-62.32 4.69,-78.82c-0.48,-1.18 -45.47,-3.92 -62.4,9.98c-13.28,-6.06 -50.34,-17.69 -93.19,-0.83c-32.7,-11.88 -50.25,-8.8 -62.02,-9.78z" fill="#9999b2" id="seokgukim"/>
+  <image height="0" id="svg_1" width="0" x="149.67" xlink:href="./images/logo.svg" y="243"/>
+ </g>
+</svg>

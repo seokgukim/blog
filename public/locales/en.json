@@ -1,0 +1,35 @@
+{
+  "HomePage": {
+    "title": "SeokguKim's Garage",
+    "subtitle": "Some Random Stuff SeokguKim Wrote"
+  },
+  "AboutPage": {
+    "title": "About Me",
+    "content": "This is SeokguKim's Blog.\nA collection of random writings on various topics."
+  },
+  "Header": {
+    "home": "Home",
+    "about": "About",
+    "posts": "Posts",
+    "tags": "Tags"
+  },
+  "Navbar": {
+    "siteTitle": "SeokguKim's Garage",
+    "home": "Home",
+    "posts": "Posts",
+    "tags": "Tags",
+    "about": "About"
+  },
+  "PostsPage": {
+    "title": "All Posts",
+    "subtitle": "Browse all available blog posts.",
+    "noPostsFound": "No posts found yet.",
+    "metaTitle": "All Posts"
+  },
+  "TagsPage": {
+    "title": "All Tags",
+    "subtitle": "Browse posts by tag.",
+    "noTagsFound": "No tags found yet.",
+    "metaTitle": "All Tags"
+  }
+}
