@@ -1,18 +1,11 @@
-import { useTranslations } from 'next-intl';
 import { getSortedPostsData, PostListItem } from 'lib/posts';
 import PostItem from '@/components/PostItem'; // Assuming PostItem is in components
-import { setRequestLocale } from 'next-intl/server';
-import { title } from 'process';
-import { sub } from 'date-fns';
 
 interface PostsPageProps {
   params: { locale: string };
 }
 
 export default function PostsPage({ params: { locale } }: PostsPageProps) {
-  // Enable static rendering
-  setRequestLocale(locale);
-
   const title = "Posts";
   const subtitle = "모든 포스트를 한 곳에서 확인하세요.";
   const noPostsFound = "아직 포스트가 없습니다."; // From ko.json PostsPage.noPostsFound

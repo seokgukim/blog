@@ -35,7 +35,7 @@ export default function PostItem({ slug, date, title, tags }: PostItemProps) {
                 // Apply styling and animation
                 className="text-xs bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-light px-2 py-0.5 rounded-full hover:bg-primary/20 dark:hover:bg-primary/30 no-underline active:scale-95 transition-transform duration-100 ease-in-out"
               >
-                {tag}
+                #{tag}
               </Link>
             ))}
           </div>

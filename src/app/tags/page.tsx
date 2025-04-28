@@ -29,7 +29,7 @@ export default function TagsPage() {
               // Added animation classes
               className="inline-block bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-light hover:bg-primary/20 dark:hover:bg-primary/30 px-4 py-2 rounded-full text-sm font-medium active:scale-95 transition-transform duration-100 ease-in-out"
             >
-              {tag}
+              #{tag}
             </Link>
           ))}
         </div>

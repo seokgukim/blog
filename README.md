@@ -15,27 +15,20 @@ This is blog SeokguKim's blog repository.
 │       ├── my-blog-post.md
 │       └── another-post.md
 ├── lib/                      # Utility functions
-│   ├── posts.ts              # Functions to read/parse posts
-│   └── katex.min.css             # KaTeX CSS
+│   └── posts.ts              # Functions to read/parse posts
 ├── public/                   # Static assets (keep existing)
-│   └── locales/              # Store translation files
-│       ├── en.json
-│       └── ko.json           # Example other language
 ├── src/
 │   ├── app/
-│   │   ├── [locale]/         # Locale group for i18n routes
-│   │   │   ├── layout.tsx    # Locale-specific layout
-│   │   │   ├── page.tsx      # Home page
-│   │   │   ├── about/
-│   │   │   │   └── page.tsx  # About page
-│   │   │   ├── posts/
-│   │   │   │   ├── [slug]/
-│   │   │   │   │   └── page.tsx # Single post page
-│   │   │   │   └── page.tsx     # Post listing page (optional)
-│   │   │   ├── profile/
-│   │   │   │   └── page.tsx  # Profile page
-│   │   │   └── tags/
-│   │   │       └── [tag]/
+│   │   ├── layout.tsx    # Locale-specific layout
+│   │   ├── page.tsx      # Home page
+│   │   ├── about/
+│   │   │   └── page.tsx  # About page
+│   │   ├── posts/
+│   │   │   ├── [slug]/
+│   │   │   │   └── page.tsx # Single post page
+│   │   │   └── page.tsx     # Post listing page (optional)
+│   │   └── tags/
+│   │   │   └── [tag]/
 │   │   │           └── page.tsx # Tag archive page
 │   │   ├── favicon.ico      
 │   │   ├── globals.css       
@@ -44,7 +37,9 @@ This is blog SeokguKim's blog repository.
 │   │   ├── Header.tsx
 │   │   ├── Footer.tsx
 │   │   ├── PostItem.tsx
-│   │   └── LanguageSwitcher.tsx
+│   │   ├── Card.tsx
+│   │   ├── ThemeSwitcher
+│   │   └── ThemeProvider.tsx
 │   └── middleware.ts         # next-intl middleware
 │   └── i18n.ts               # next-intl configuration
 ├── .gitignore                
@@ -55,6 +50,5 @@ This is blog SeokguKim's blog repository.
 ├── pnpm-lock.yaml           
 ├── postcss.config.mjs        
 ├── README.md                 
-├── tailwind.config.ts
 └── tsconfig.json             
 ```

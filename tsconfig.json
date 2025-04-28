@@ -1,23 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "lib/*": [
-        "./lib/*"
-      ],
-      "public/*": [
-        "./public/*"
-      ],
-      "next/*": [
-        "./node_modules/next/*"
-      ]
-    },
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
     "target": "ES2017",
     "lib": [
       "dom",
@@ -26,27 +8,42 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
+    "strict": true,
     "noEmit": true,
-    "incremental": true,
-    "module": "esnext", // Often used with nodenext/bundler
-    "moduleResolution": "bundler", // Or "nodenext"
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "incremental": true,
     "plugins": [
       {
         "name": "next"
       }
     ],
-    "esModuleInterop": true
-  },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-, "tailwind.configjts"  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "paths": {
+      "@/*": [
+        "./src/*"
+    ],
+    "lib/*": [
+      "./lib/*"
+    ],
+    "public/*": [
+      "./public/*"
+    ],
+    "next/*": [
+      "./node_modules/next/*"
+    ]
+  }
+},
+"include": [
+  "next-env.d.ts",
+  "**/*.ts",
+  "**/*.tsx",
+  ".next/types/**/*.ts"
+],
+"exclude": [
+  "node_modules"
+]
 }

@@ -3,9 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { unified, Processor } from 'unified';
 import remarkParse from 'remark-parse';
-import remarkMath from 'remark-math';
 import remarkRehype from 'remark-rehype';
-import rehypeKatex from 'rehype-katex';
 import rehypeStringify from 'rehype-stringify';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -30,9 +28,7 @@ export type PostListItem = Omit<PostData, 'contentHtml'>;
 // Configure markdown processor
 const markdownProcessor = unified()
   .use(remarkParse)
-  .use(remarkMath)
   .use(remarkRehype, { allowDangerousHtml: true })
-  .use(rehypeKatex)
   .use(rehypeSlug)
   .use(rehypeAutolinkHeadings, { behavior: 'wrap' })
   .use(rehypePrettyCode, {
