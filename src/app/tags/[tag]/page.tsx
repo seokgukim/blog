@@ -44,13 +44,16 @@ export default function TagPage({ params }: TagPageParams) {
             {/* Use flex column for post items */}
             <div className="flex flex-col space-y-0"> {/* Adjusted spacing if PostItem has margin */}
                 {posts.map((post: PostListItem) => ( // Explicit type
-                    <PostItem
-                        key={post.slug}
-                        slug={post.slug}
-                        date={post.date}
-                        title={post.title}
-                        tags={post.tags}
-                    />
+                    // NOTE: Adding hover effects here is basic.
+                    // It's better to add them inside the PostItem component itself.
+                    <div key={post.slug} className="transition-transform duration-150 ease-in-out hover:translate-x-1">
+                        <PostItem
+                            slug={post.slug}
+                            date={post.date}
+                            title={post.title}
+                            tags={post.tags}
+                        />
+                    </div>
                 ))}
                 {/* Display message if no posts are found */}
                 {posts.length === 0 && (

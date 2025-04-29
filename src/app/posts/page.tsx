@@ -20,13 +20,16 @@ export default function PostsPage() {
       {allPostsData.length > 0 ? (
         <div className="flex flex-col space-y-0"> {/* Adjust spacing as needed */}
           {allPostsData.map((post) => (
-            <PostItem
-              key={post.slug}
-              slug={post.slug}
-              date={post.date}
-              title={post.title}
-              tags={post.tags}
-            />
+            // NOTE: Adding hover effects here is basic.
+            // It's better to add them inside the PostItem component itself.
+            <div key={post.slug} className="transition-transform duration-150 ease-in-out hover:translate-x-1">
+                <PostItem
+                  slug={post.slug}
+                  date={post.date}
+                  title={post.title}
+                  tags={post.tags}
+                />
+            </div>
           ))}
         </div>
       ) : (

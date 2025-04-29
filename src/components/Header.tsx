@@ -43,6 +43,8 @@ export default function Header() {
                  src="/logo.svg"
                  alt="Seokgukim's Garage"
                  className="h-8 w-auto"
+                 width={32}
+                 height={32}
                  priority
                />
              </Link>
@@ -63,7 +65,7 @@ export default function Header() {
                   key={item.href}
                   href={linkHref}
                   // Added animation classes
-                  className={`rounded-md px-3 py-2 text-sm font-medium duration-200 ease-in-out active:scale-95 transition-transform ${
+                  className={`rounded-md px-3 py-2 text-sm font-medium duration-200 ease-in-out active:scale-95 transition ${
                     isActive
                       ? 'bg-accent dark:bg-accent-dark text-accent-foreground dark:text-accent-dark-foreground' // Active link style with dark mode
                       : 'text-primary-foreground/80 dark:text-primary-dark-foreground/80 hover:text-primary-foreground dark:hover:text-primary-dark-foreground hover:bg-accent/20 dark:hover:bg-accent-dark/20' // Inactive link style with dark mode
@@ -90,7 +92,7 @@ export default function Header() {
               type="button"
               onClick={toggleMobileMenu}
               // Added animation classes
-              className="relative inline-flex items-center justify-center rounded-md p-2 text-primary-foreground/80 dark:text-primary-dark-foreground/80 hover:bg-accent/20 dark:hover:bg-accent-dark/20 hover:text-primary-foreground dark:hover:text-primary-dark-foreground focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white duration-200 ease-in-out active:scale-95 transition-transform"
+              className="relative inline-flex items-center justify-center rounded-md p-2 text-primary-foreground/80 dark:text-primary-dark-foreground/80 hover:bg-accent/20 dark:hover:bg-accent-dark/20 hover:text-primary-foreground dark:hover:text-primary-dark-foreground focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white duration-200 ease-in-out active:scale-95 transition"
               aria-controls="mobile-menu"
               aria-expanded={isMobileMenuOpen}
             >
@@ -124,7 +126,7 @@ export default function Header() {
                    href={linkHref}
                    onClick={() => setIsMobileMenuOpen(false)} // Close menu on click
                    // Added animation classes
-                   className={`block rounded-md px-3 py-2 text-base font-medium duration-200 ease-in-out active:scale-95 transition-transform ${
+                   className={`block rounded-md px-3 py-2 text-base font-medium duration-200 ease-in-out active:scale-95 transition ${
                      isActive
                        ? 'bg-accent dark:bg-accent-dark text-accent-foreground dark:text-accent-dark-foreground' // Active link style with dark mode
                        : 'text-primary-foreground/80 dark:text-primary-dark-foreground/80 hover:text-primary-foreground dark:hover:text-primary-dark-foreground hover:bg-accent/20 dark:hover:bg-accent-dark/20' // Inactive link style with dark mode

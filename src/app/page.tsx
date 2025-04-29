@@ -30,7 +30,8 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub Profile"
-          className="text-muted-light dark:text-muted-dark hover:text-foreground-light dark:hover:text-foreground-dark transition-colors"
+          // Added hover:scale-110, active:scale-95, transition-transform, duration-150
+          className="text-muted-light dark:text-muted-dark hover:text-foreground-light dark:hover:text-foreground-dark transition-all duration-150 ease-in-out hover:scale-110 active:scale-95"
         >
           <FaGithub size={28} /> {/* Adjust icon size as needed */}
         </a>
@@ -39,7 +40,8 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn Profile"
-          className="text-muted-light dark:text-muted-dark hover:text-foreground-light dark:hover:text-foreground-dark transition-colors"
+          // Added hover:scale-110, active:scale-95, transition-transform, duration-150
+          className="text-muted-light dark:text-muted-dark hover:text-foreground-light dark:hover:text-foreground-dark transition-all duration-150 ease-in-out hover:scale-110 active:scale-95"
         >
           <FaLinkedin size={28} /> {/* Adjust icon size as needed */}
         </a>
@@ -49,6 +51,8 @@ export default function Home() {
       {/* Recent Post Section */}
       <h2 className="text-2xl font-semibold mb-4 text-foreground-light dark:text-foreground-dark">{recentPostHeading}</h2>
       {recentPost ? (
+        // You might want to add hover/active animations inside the PostItem component itself
+        // for a better effect on the card/link within it.
         <PostItem
           key={recentPost.slug}
           slug={recentPost.slug}
@@ -63,7 +67,8 @@ export default function Home() {
       {/* Optional: Link to see all posts */}
       {allPostsData.length > 1 && (
          <div className="mt-8">
-            <Link href="/posts" className="text-primary hover:underline">
+            {/* Added hover:opacity-80, active:scale-95, transition, duration-150 */}
+            <Link href="/posts" className="text-primary hover:underline hover:opacity-80 active:scale-95 inline-block transition duration-150 ease-in-out">
                 모든 포스트 보기
             </Link>
          </div>
