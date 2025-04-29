@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import ThemeSwitcher from './ThemeSwitcher';
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 // Define type for navigation items
 interface NavItem {
@@ -38,10 +39,11 @@ export default function Header() {
           <div className="flex-shrink-0">
              {/* Added animation classes */}
              <Link href={`/`} className="flex items-center hover:opacity-80 duration-200 active:scale-95 transition-transform ease-in-out"> {/* Removed locale */}
-               <img
+               <Image
                  src="/logo.svg"
                  alt="Seokgukim's Garage"
-                 className="h-8"
+                 className="h-8 w-auto"
+                 priority
                />
              </Link>
           </div>

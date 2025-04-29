@@ -1,34 +1,36 @@
 "use client"
 
 import Script from 'next/script'
-import { useState, useEffect } from 'react'; // Import useState and useEffect
+import { useState, useEffect } from 'react'; // Import useCallback
 
 export default function LoadKatex() {
 
   const [isKatexLoaded, setIsKatexLoaded] = useState(false);
 
-  const renderMath = () => {
-    if (window.renderMathInElement) {
-      console.log('Rendering KaTeX...'); // Optional: for debugging
-      window.renderMathInElement(document.body, {
-        delimiters: [
-          { left: '$$', right: '$$', display: true },
-          { left: '$', right: '$', display: false },
-          { left: '\\(', right: '\\)', display: false },
-          { left: '\\[', right: '\\]', display: true }
-        ],
-        throwOnError: false
-      });
-    } else {
-      console.error("renderMathInElement not found. KaTeX auto-render script might not have loaded correctly.");
-    }
-  };
-
   useEffect(() => {
+    // Define renderMath inside useEffect or wrap with useCallback
+    const renderMath = () => {
+      if (window.renderMathInElement) {
+        console.log('Rendering KaTeX...'); // Optional: for debugging
+        window.renderMathInElement(document.body, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false },
+            { left: '\\(', right: '\\)', display: false },
+            { left: '\\[', right: '\\]', display: true }
+          ],
+          throwOnError: false
+        });
+      } else {
+        console.error("renderMathInElement not found. KaTeX auto-render script might not have loaded correctly.");
+      }
+    };
+
     if (isKatexLoaded) { // Only attempt render if core is loaded
       renderMath();
     }
-  }, [isKatexLoaded, renderMath]); // Re-run if isKatexLoaded changes
+    // No need to include renderMath in dependencies now
+  }, [isKatexLoaded]);
 
 
   return (

@@ -1,11 +1,8 @@
 import { getSortedPostsData, PostListItem } from 'lib/posts';
 import PostItem from '@/components/PostItem'; // Assuming PostItem is in components
 
-interface PostsPageProps {
-  params: { locale: string };
-}
 
-export default function PostsPage({ params: { locale } }: PostsPageProps) {
+export default function PostsPage() {
   const title = "Posts";
   const subtitle = "모든 포스트를 한 곳에서 확인하세요.";
   const noPostsFound = "아직 포스트가 없습니다."; // From ko.json PostsPage.noPostsFound
@@ -38,14 +35,3 @@ export default function PostsPage({ params: { locale } }: PostsPageProps) {
     </section>
   );
 }
-
-// Optional: Add metadata generation
-// import type { Metadata } from 'next';
-// import { getTranslator } from 'next-intl/server';
-
-// export async function generateMetadata({ params: { locale } }: PostsPageProps): Promise<Metadata> {
-//   const t = await getTranslator(locale, 'PostsPage');
-//   return {
-//     title: t('metaTitle'),
-//   };
-// }

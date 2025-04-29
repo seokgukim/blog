@@ -3,6 +3,14 @@ import PostItem from '@/components/PostItem';
 import type { Metadata } from 'next'; // Import Metadata type
 import { notFound } from 'next/navigation'; // Import notFound for tag existence check
 
+// Type definition for page params
+type TagPageParams = {
+  params: {
+    tag: string;
+  };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
+
 // Generate static paths for all tags (no locale needed)
 export async function generateStaticParams(): Promise<{ tag: string }[]> {
     const tags: string[] = getAllTags();
@@ -10,14 +18,8 @@ export async function generateStaticParams(): Promise<{ tag: string }[]> {
     return tags.map((tag: string) => ({ tag: encodeURIComponent(tag) }));
 }
 
-// Define props type (removed locale)
-interface TagPageProps {
-    params: {
-        tag: string;
-    };
-}
-
-export default function TagPage({ params }: TagPageProps) { // Explicit return type
+// Add proper type annotation for params
+export default function TagPage({ params }: TagPageParams) {
     const decodedTag: string = decodeURIComponent(params.tag);
     const posts: PostListItem[] = getPostsByTag(decodedTag); // Explicit type
     const allTags = getAllTags(); // Get all tags to check existence
@@ -59,15 +61,9 @@ export default function TagPage({ params }: TagPageProps) { // Explicit return t
     );
 }
 
-// Define metadata props type
-interface MetadataProps {
-    params: { tag: string };
-}
-
-// Generate metadata
-export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
-  const awaitedParams = await params;
-  const decodedTag: string = decodeURIComponent(awaitedParams.tag);
+// Generate metadata with proper type annotation for params
+export async function generateMetadata({ params }: TagPageParams): Promise<Metadata> {
+  const decodedTag: string = decodeURIComponent(params.tag);
   return {
     title: `Posts tagged with #${decodedTag}`,
   };
