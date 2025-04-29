@@ -11,4 +11,5 @@ COPY . .
 # Expose the port the app runs on
 EXPOSE 3000
 # Run the app
+RUN pnpm build
 CMD [ "pnpm", "start" ]
