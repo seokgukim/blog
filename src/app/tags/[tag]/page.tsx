@@ -4,12 +4,11 @@ import type { Metadata } from 'next'; // Import Metadata type
 import { notFound } from 'next/navigation'; // Import notFound for tag existence check
 
 // Type definition for page params
-type TagPageParams = {
-  params: {
-    tag: string;
-  };
-  searchParams?: { [key: string]: string | string[] | undefined };
-};
+interface TagPageParams {
+    params: Promise<{
+        tag: string;
+    }>;
+}
 
 // Generate static paths for all tags (no locale needed)
 export async function generateStaticParams(): Promise<{ tag: string }[]> {
@@ -19,8 +18,9 @@ export async function generateStaticParams(): Promise<{ tag: string }[]> {
 }
 
 // Add proper type annotation for params
-export default function TagPage({ params }: TagPageParams) {
-    const decodedTag: string = decodeURIComponent(params.tag);
+export default async function TagPage({ params }: TagPageParams) {
+    const { tag } = await params; // Await the promise to get the tag
+    const decodedTag: string = decodeURIComponent(tag);
     const posts: PostListItem[] = getPostsByTag(decodedTag); // Explicit type
     const allTags = getAllTags(); // Get all tags to check existence
 
@@ -57,7 +57,7 @@ export default function TagPage({ params }: TagPageParams) {
                 ))}
                 {/* Display message if no posts are found */}
                 {posts.length === 0 && (
-                     <p className="text-muted-light dark:text-muted-dark mt-4">{noPostsFoundText}</p> // Hardcoded text
+                    <p className="text-muted-light dark:text-muted-dark mt-4">{noPostsFoundText}</p> // Hardcoded text
                 )}
             </div>
         </section>
@@ -66,8 +66,9 @@ export default function TagPage({ params }: TagPageParams) {
 
 // Generate metadata with proper type annotation for params
 export async function generateMetadata({ params }: TagPageParams): Promise<Metadata> {
-  const decodedTag: string = decodeURIComponent(params.tag);
-  return {
-    title: `Posts tagged with #${decodedTag}`,
-  };
+    const { tag } = await params; // Await the promise to get the tag
+    const decodedTag: string = decodeURIComponent(tag);
+    return {
+        title: `Posts tagged with #${decodedTag}`,
+    };
 }
