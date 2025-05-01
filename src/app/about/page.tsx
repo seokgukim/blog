@@ -23,7 +23,7 @@ export default async function ProfilePage() { // Explicit return type
         <section className="bg-card-light dark:bg-card-dark p-6 rounded-lg border border-border-light dark:border-border-dark shadow-sm">
             <h1 className="text-3xl font-bold mb-4 text-foreground-light dark:text-foreground-dark">About</h1>
 
-            <h2 className="text-xl font-semibold mb-2 text-foreground-light dark:text-foreground-dark">It's me, SeokguKim!</h2>
+            <h2 className="text-xl font-semibold mb-2 text-foreground-light dark:text-foreground-dark">SeokguKim, the Problem Solver</h2>
 
             <div className="prose dark:prose-invert max-w-none">
                 <div className="markdown-content" dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
