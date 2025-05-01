@@ -1,7 +1,7 @@
 import { getSortedPostsData, PostListItem } from 'lib/posts';
 import PostItem from '@/components/PostItem';
 import Link from 'next/link'; // Import Link for navigation
-import { FaGithub, FaLinkedin } from 'react-icons/fa'; // Import icons
+import { FaGithub, FaLinkedin, FaGlobe } from 'react-icons/fa'; // Import icons
 
 export default function Home() {
   const allPostsData: PostListItem[] = getSortedPostsData();
@@ -14,6 +14,7 @@ export default function Home() {
   const noPostsFoundText = "아직 포스트가 없습니다."; // From ko.json PostsPage.noPostsFound
 
   // Replace with your actual profile URLs
+  const formerBlogUrl = "https://seokgukim.github.io";
   const githubUrl = "https://github.com/seokgukim";
   const linkedinUrl = "https://linkedin.com/in/seungroklee549";
 
@@ -25,6 +26,17 @@ export default function Home() {
 
       {/* Social Links */}
       <div className="flex space-x-4 mb-12">
+        <a
+          href={formerBlogUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Former Blog"
+          // Added hover:scale-110, active:scale-95, transition-transform, duration-150
+          className="text-muted-light dark:text-muted-dark hover:text-foreground-light dark:hover:text-foreground-dark transition-all duration-150 ease-in-out hover:scale-110 active:scale-95"
+        >
+          <FaGlobe size={28} /> {/* Adjust icon size as needed */}
+        </a>
+        
         <a
           href={githubUrl}
           target="_blank"
