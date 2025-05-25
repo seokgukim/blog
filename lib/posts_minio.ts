@@ -67,16 +67,24 @@ function parseFrontmatter(data: Record<string, unknown>, filePath: string): Post
     if (typeof title !== 'string' || !title) {
         throw new Error(`Post "${filePath}" missing required 'title' field.`);
     }
-    if (typeof date !== 'string' || !date) {
-        throw new Error(`Post "${filePath}" missing required 'date' field.`);
-    }
     if (tags !== undefined && (!Array.isArray(tags) || tags.some(tag => typeof tag !== 'string'))) {
         throw new Error(`Post "${filePath}" 'tags' field must be an array of strings if present.`);
     }
 
+    let parsedDate: string;
+    // Date regex like yyyy-mm-dd
+    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+    if (typeof date === 'string' && dateRegex.test(date)) {
+        parsedDate = date;
+    } else if (date instanceof Date && !isNaN(date.getTime())) {
+        parsedDate = date.toISOString().split('T')[0]; // Convert Date to yyyy-mm-dd
+    } else {
+        throw new Error(`Post "${filePath}" missing or invalid 'date' field. Expected format: yyyy-mm-dd.`);
+    }
+    
     return {
         title,
-        date,
+        date: parsedDate,
         tags: tags as string[] | undefined,
     };
 }
