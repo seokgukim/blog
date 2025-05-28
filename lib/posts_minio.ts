@@ -8,7 +8,6 @@ import rehypeStringify from 'rehype-stringify';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrettyCode from 'rehype-pretty-code';
-import rehypeMermaid from 'rehype-mermaid';
 import { VFile } from 'vfile';
 import type { Options as RehypePrettyCodeOptions } from 'rehype-pretty-code';
 
@@ -59,7 +58,6 @@ const markdownProcessor = unified()
         theme: 'github-dark',
         keepBackground: false,
     } as RehypePrettyCodeOptions)
-    .use(rehypeMermaid)
     .use(rehypeStringify, { allowDangerousHtml: true });
 
 // --- Helper function to parse frontmatter safely (same as posts.ts) ---
