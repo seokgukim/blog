@@ -8,6 +8,7 @@ import rehypeStringify from 'rehype-stringify';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrettyCode from 'rehype-pretty-code';
+import remarkGfm from 'remark-gfm';
 import { VFile } from 'vfile';
 import type { Options as RehypePrettyCodeOptions } from 'rehype-pretty-code';
 
@@ -51,6 +52,7 @@ export type PostListItem = Omit<PostData, 'contentHtml'>;
 // --- Configure markdown processor (same as posts.ts) ---
 const markdownProcessor = unified()
     .use(remarkParse)
+    .use(remarkGfm) // GitHub Flavored Markdown support
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings, { behavior: 'wrap' })
