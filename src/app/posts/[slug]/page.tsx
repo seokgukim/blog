@@ -30,7 +30,7 @@ export default function PostPage({ params }: PageParams) {
                 <div className="flex flex-row relative">
                     {/* Main content area - assign the ref here */}
                     {/* Added margin-left for lg screens to avoid overlap with fixed navigator */}
-                    <article id="main-post-content" className="prose dark:prose-invert max-w-none lg:ml-52 w-full">
+                    <article id="main-post-content" className="prose dark:prose-invert max-w-none w-full">
                         <h1 className="text-2xl md:text-3xl font-bold mb-2">{postData.title}</h1>
                         <div className="text-sm mb-4">
                             <time dateTime={postData.date}>
