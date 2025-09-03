@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import BackToTopButton from '@/components/BackToTopButton';
 import LoadKatex from "@/components/LoadKatex";
 import Script from 'next/script'; // Import the Script component
+import MetaData from "@/components/MetaData";
 
 export const metadata: Metadata = {
     title: "SeokguKim's Garage",
@@ -22,6 +23,7 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <head>
+                <MetaData />
                 <LoadKatex />
             </head>
             <body>
