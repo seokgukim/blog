@@ -7,7 +7,7 @@ export default function MetaData() {
             <meta property="og:description" content="A personal blog by SeokguKim" />
             <meta property="og:type" content="website" />
             <meta property="og:url" content="https://seokgukim.co.kr" />
-            <meta property="og:image" content="https://sd.seokgukim.co.kr/obsidian/share/symbol_seokgukim.svg" />
+            <meta property="og:image" content="https://sd.seokgukim.co.kr/obsidian/share/Symbol_SeokguKim_wb.png" />
         </>
     );
 }
