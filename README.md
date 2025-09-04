@@ -9,46 +9,55 @@ This is blog SeokguKim's blog repository.
 ## Structure
 
 ```
-.
-├── content/                  # Store markdown posts here
-│   └── posts/
-│       ├── my-blog-post.md
-│       └── another-post.md
-├── lib/                      # Utility functions
-│   └── posts.ts              # Functions to read/parse posts
-├── public/                   # Static assets (keep existing)
-├── src/
-│   ├── app/
-│   │   ├── layout.tsx    # Locale-specific layout
-│   │   ├── page.tsx      # Home page
-│   │   ├── about/
-│   │   │   └── page.tsx  # About page
-│   │   ├── posts/
-│   │   │   ├── [slug]/
-│   │   │   │   └── page.tsx # Single post page
-│   │   │   └── page.tsx     # Post listing page (optional)
-│   │   └── tags/
-│   │   │   └── [tag]/
-│   │   │           └── page.tsx # Tag archive page
-│   │   ├── favicon.ico      
-│   │   ├── globals.css       
-│   │   └── layout.tsx        # Root layout (minimal)
-│   ├── components/           # Reusable components
-│   │   ├── Header.tsx
-│   │   ├── Footer.tsx
-│   │   ├── PostItem.tsx
-│   │   ├── Card.tsx
-│   │   ├── ThemeSwitcher
-│   │   └── ThemeProvider.tsx
-│   └── middleware.ts         # next-intl middleware
-│   └── i18n.ts               # next-intl configuration
-├── .gitignore                
-├── eslint.config.mjs         
-├── next-env.d.ts             
-├── next.config.ts           
-├── package.json              
-├── pnpm-lock.yaml           
-├── postcss.config.mjs        
-├── README.md                 
-└── tsconfig.json             
+blog/
+├── .dockerignore
+├── .gitignore
+├── dockerfile
+├── eslint.config.mjs
+├── next.config.ts
+├── package.json
+├── pnpm-lock.yaml
+├── postcss.config.mjs
+├── tailwind.config.ts
+├── tsconfig.json
+├── README.md
+├── content/
+│   └── about.md
+├── lib/
+│   ├── posts.ts
+│   └── posts_minio.ts
+├── public/
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── logo.svg
+│   └── window.svg
+└── src/
+    ├── app/
+    │   ├── favicon.ico
+    │   ├── globals.css
+    │   ├── layout.tsx
+    │   ├── page.tsx
+    │   ├── about/
+    │   │   └── page.tsx
+    │   ├── posts/
+    │   │   ├── page.tsx
+    │   │   └── [slug]/
+    │   │       └── page.tsx
+    │   └── tags/
+    │       ├── page.tsx
+    │       └── [tag]/
+    │           └── page.tsx
+    ├── components/
+    │   ├── BackToTopButton.tsx
+    │   ├── Card.tsx
+    │   ├── Footer.tsx
+    │   ├── Header.tsx
+    │   ├── LoadKatex.tsx
+    │   ├── MetaData.tsx
+    │   ├── PostItem.tsx
+    │   ├── PostSideNavigator.tsx
+    │   ├── ThemeProvider.tsx
+    │   └── ThemeSwitcher.tsx
+    └── types/
+        └── global.d.ts 
 ```
