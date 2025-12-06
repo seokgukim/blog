@@ -20,6 +20,9 @@ importers:
       gray-matter:
         specifier: ^4.0.3
         version: 4.0.3
+      katex:
+        specifier: ^0.16.25
+        version: 0.16.25
       minio:
         specifier: ^8.0.6
         version: 8.0.6

@@ -13,6 +13,7 @@
     "autoprefixer": "^10.4.22",
     "date-fns": "^4.1.0",
     "gray-matter": "^4.0.3",
+    "katex": "^0.16.25",
     "minio": "^8.0.6",
     "next": "16.0.7",
     "next-themes": "^0.4.6",
