@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import 'katex/dist/katex.min.css';
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import BackToTopButton from '@/components/BackToTopButton';
-import LoadKatex from "@/components/LoadKatex";
 import Script from 'next/script'; // Import the Script component
 import MetaData from "@/components/MetaData";
 
@@ -24,7 +24,6 @@ export default function RootLayout({
         <html lang="en" suppressHydrationWarning>
             <head>
                 <MetaData />
-                <LoadKatex />
             </head>
             <body>
                 {/* Google Analytics Scripts */}

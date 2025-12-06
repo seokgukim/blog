@@ -9,6 +9,8 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrettyCode from 'rehype-pretty-code';
 import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 import { VFile } from 'vfile';
 import type { Options as RehypePrettyCodeOptions } from 'rehype-pretty-code';
 
@@ -29,8 +31,10 @@ export type PostListItem = Omit<PostData, 'contentHtml'>;
 // Configure markdown processor
 const markdownProcessor = unified()
     .use(remarkParse)
+    .use(remarkMath)
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeKatex)
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings, { behavior: 'wrap' })
     .use(rehypePrettyCode, {

@@ -1,2 +1,10 @@
 @import "tailwindcss";
 @config "../../tailwind.config.ts";
+/* Fix for KaTeX display math */
+.katex-display {
+  display: block;
+  margin: 1em 0;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
