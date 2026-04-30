@@ -1,5 +1,9 @@
 name = "blog"
-pages_build_output_dir = "out"
+compatibility_date = "2026-04-30"
+
+[assets]
+directory = "./out"
+not_found_handling = "404-page"
 
 [vars]
 S3_PUBLIC_ENDPOINT = "https://s3.seokgukim.com"

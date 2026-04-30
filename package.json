@@ -8,6 +8,7 @@
     "lint": "eslint .",
     "pages:preview": "pnpm build && wrangler pages dev out",
     "pages:deploy": "pnpm build && wrangler pages deploy out",
+    "worker:deploy": "pnpm build && wrangler deploy",
     "content:dev": "wrangler dev --config cloudflare/content-source.wrangler.toml",
     "content:deploy": "wrangler deploy --config cloudflare/content-source.wrangler.toml"
   },
