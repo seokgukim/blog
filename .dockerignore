@@ -1,5 +1,14 @@
-# ignore node_modules
-node_modules
-# ignore build artifacts
-build
+.git
+.github
 .next
+.wrangler
+**/.wrangler/
+node_modules
+out
+coverage
+.env*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+*.tsbuildinfo

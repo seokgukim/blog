@@ -1,4 +1,4 @@
-import { getAllTagsMinio, getPostsByTagMinio, PostListItem } from 'lib/posts_minio'; // Import type
+import { getAllTagsS3, getPostsByTagS3, PostListItem } from 'lib/posts_s3';
 import PostItem from '@/components/PostItem';
 import type { Metadata } from 'next'; // Import Metadata type
 import { notFound } from 'next/navigation'; // Import notFound for tag existence check
@@ -12,17 +12,19 @@ interface TagPageParams {
 
 // Generate static paths for all tags (no locale needed)
 export async function generateStaticParams(): Promise<{ tag: string }[]> {
-    const tags: string[] = await getAllTagsMinio();
+    const tags: string[] = await getAllTagsS3();
     // Need to generate for each locale if not using middleware routing fully
     return tags.map((tag: string) => ({ tag: encodeURIComponent(tag) }));
 }
+
+export const dynamicParams = false;
 
 // Add proper type annotation for params
 export default async function TagPage({ params }: TagPageParams) {
     const { tag } = await params; // Await the promise to get the tag
     const decodedTag: string = decodeURIComponent(tag);
-    const posts: PostListItem[] = await getPostsByTagMinio(decodedTag); // Explicit type
-    const allTags = await getAllTagsMinio(); // Get all tags to check existence
+    const posts: PostListItem[] = await getPostsByTagS3(decodedTag);
+    const allTags = await getAllTagsS3();
 
     // Check if the tag actually exists
     if (!allTags.includes(decodedTag)) {

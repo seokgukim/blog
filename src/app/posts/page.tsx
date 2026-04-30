@@ -1,4 +1,4 @@
-import { getSortedPostsDataMinio, PostListItem } from 'lib/posts_minio'; // Adjust the import path as needed
+import { getSortedPostsDataS3, PostListItem } from 'lib/posts_s3';
 import PostItem from '@/components/PostItem'; // Assuming PostItem is in components
 
 
@@ -6,7 +6,7 @@ export default async function PostsPage() {
     const title = "Posts";
     const subtitle = "모든 포스트를 한 곳에서 확인하세요.";
     const noPostsFound = "아직 포스트가 없습니다."; // From ko.json PostsPage.noPostsFound
-    const allPostsData: PostListItem[] = await getSortedPostsDataMinio();
+    const allPostsData: PostListItem[] = await getSortedPostsDataS3();
 
     return (
         <section>

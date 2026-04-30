@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import { getAllTagsMinio } from 'lib/posts_minio';
+import { getAllTagsS3 } from 'lib/posts_s3';
 
 export default async function TagsPage() {
     const title = "Tags"; // From ko.json TagsPage.title
     const subtitle = "태그별로 포스트를 찾아보세요"; // From ko.json TagsPage.subtitle
     const noTagsFound = "아직 태그가 없습니다."; // From ko.json TagsPage.noTagsFound
 
-    const allTags: string[] = await getAllTagsMinio(); // Fetch all unique tags
+    const allTags: string[] = await getAllTagsS3();
 
     // Sort tags alphabetically
     allTags.sort((a, b) => a.localeCompare(b));

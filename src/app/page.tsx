@@ -1,10 +1,10 @@
-import { getSortedPostsDataMinio, PostListItem } from 'lib/posts_minio';
+import { getSortedPostsDataS3, PostListItem } from 'lib/posts_s3';
 import PostItem from '@/components/PostItem';
 import Link from 'next/link'; // Import Link for navigation
 import { FaGithub, FaLinkedin, FaGlobe } from 'react-icons/fa'; // Import icons
 
 export default async function Home() {
-    const allPostsData: PostListItem[] = await getSortedPostsDataMinio();
+    const allPostsData: PostListItem[] = await getSortedPostsDataS3();
     const recentPost = allPostsData.length > 0 ? allPostsData[0] : null; // Get the first post (most recent)
 
     // Hardcoded Korean strings based on ko.json

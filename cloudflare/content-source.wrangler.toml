@@ -1,0 +1,15 @@
+name = "blog-content-source"
+main = "content-source-worker.js"
+compatibility_date = "2026-04-29"
+workers_dev = false
+preview_urls = false
+routes = [
+  { pattern = "s3.seokgukim.com/blog/*", zone_name = "seokgukim.com" },
+]
+
+[vars]
+BLOG_PREFIX = "blog"
+
+[[r2_buckets]]
+binding = "BLOG_BUCKET"
+bucket_name = "blog"

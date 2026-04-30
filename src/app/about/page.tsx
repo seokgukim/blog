@@ -1,4 +1,4 @@
-import { getPostData } from "lib/posts";
+import { getAboutData } from "lib/posts";
 import { FaGithub, FaLinkedin, FaGlobe } from "react-icons/fa"; // Existing icons
 // Import Simple Icons for languages
 import {
@@ -13,7 +13,7 @@ import {
 import { TbBrandCSharp } from "react-icons/tb";
 
 export default async function ProfilePage() { // Explicit return type
-    const postData = await getPostData("../about");
+    const postData = await getAboutData();
     if (!postData) {
         return <div>Loading...</div>; // Handle loading state
     }

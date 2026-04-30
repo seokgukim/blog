@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 interface Heading {
     id: string;
@@ -18,7 +18,7 @@ export default function PostSideNavigator({ contentSelector }: PostSideNavigator
     const [headings, setHeadings] = useState<Heading[]>([]);
     const [activeHeadingId, setActiveHeadingId] = useState<string | null>(null);
 
-    const ensureHeadingId = (headingElement: HTMLHeadingElement): string => {
+    const ensureHeadingId = useCallback((headingElement: HTMLHeadingElement): string => {
         if (headingElement.id) {
             return headingElement.id;
         }
@@ -36,15 +36,16 @@ export default function PostSideNavigator({ contentSelector }: PostSideNavigator
         }
         headingElement.id = uniqueSlug;
         return uniqueSlug;
-    };
+    }, []);
 
     useEffect(() => {
         const contentElement = document.querySelector(contentSelector);
+        let animationFrameId: number;
 
         if (!contentElement) {
             console.warn(`PostSideNavigator: Content element with selector "${contentSelector}" not found.`);
-            setHeadings([]);
-            return;
+            animationFrameId = window.requestAnimationFrame(() => setHeadings([]));
+            return () => window.cancelAnimationFrame(animationFrameId);
         }
 
         const headingElements = Array.from(
@@ -63,10 +64,12 @@ export default function PostSideNavigator({ contentSelector }: PostSideNavigator
             };
         });
 
-        setHeadings(extractedHeadings);
-    }, [contentSelector]);
+        animationFrameId = window.requestAnimationFrame(() => setHeadings(extractedHeadings));
 
-    const handleScroll = () => {
+        return () => window.cancelAnimationFrame(animationFrameId);
+    }, [contentSelector, ensureHeadingId]);
+
+    const handleScroll = useCallback(() => {
         const windowHeight = window.innerHeight;
         const documentHeight = document.documentElement.scrollHeight;
         const scrollY = window.scrollY;
@@ -89,16 +92,18 @@ export default function PostSideNavigator({ contentSelector }: PostSideNavigator
             }
         }
         setActiveHeadingId(currentActiveHeadingId);
-    };
+    }, [headings]);
 
     useEffect(() => {
+        const animationFrameId = window.requestAnimationFrame(handleScroll);
+
         window.addEventListener('scroll', handleScroll, { passive: true });
-        handleScroll();
 
         return () => {
+            window.cancelAnimationFrame(animationFrameId);
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [headings]);
+    }, [handleScroll]);
 
     const scrollToHeading = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
         e.preventDefault();
