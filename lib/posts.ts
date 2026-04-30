@@ -150,12 +150,7 @@ export function getPostsByTag(tag: string): PostListItem[] {
         post.tags?.includes(tag) ?? false);
 }
 
-// Get full post data including HTML content
-export async function getPostData(slug: string): Promise<PostData> {
-    // Ensure postsDirectory is correct
-    const postsDirectory = path.join(process.cwd(), 'content/posts');
-    const fullPath = path.join(postsDirectory, `${slug}.md`);
-
+async function getMarkdownData(fullPath: string, slug: string, fileName: string): Promise<PostData> {
     if (!fs.existsSync(fullPath)) {
         throw new Error(`Post file not found: ${fullPath}`);
     }
@@ -166,11 +161,11 @@ export async function getPostData(slug: string): Promise<PostData> {
     } catch (error: unknown) {
         console.error(`Error reading file ${fullPath}:`,
             error instanceof Error ? error.message : String(error));
-        throw new Error(`Could not read post file: ${slug}.md`);
+        throw new Error(`Could not read post file: ${fileName}`);
     }
 
     const matterResult = matter(fileContents);
-    const frontmatter: PostFrontmatter = parseFrontmatter(matterResult.data, `${slug}.md`);
+    const frontmatter: PostFrontmatter = parseFrontmatter(matterResult.data, fileName);
 
     let processedContent: VFile;
     try {
@@ -188,4 +183,16 @@ export async function getPostData(slug: string): Promise<PostData> {
         contentHtml,
         ...frontmatter,
     };
+}
+
+// Get full post data including HTML content
+export async function getPostData(slug: string): Promise<PostData> {
+    // Ensure postsDirectory is correct
+    const postsDirectory = path.join(process.cwd(), 'content/posts');
+    const fileName = `${slug}.md`;
+    return getMarkdownData(path.join(postsDirectory, fileName), slug, fileName);
+}
+
+export async function getAboutData(): Promise<PostData> {
+    return getMarkdownData(path.join(process.cwd(), 'content/about.md'), 'about', 'about.md');
 }

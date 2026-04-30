@@ -1,0 +1,7 @@
+name = "blog"
+pages_build_output_dir = "out"
+
+[vars]
+S3_PUBLIC_ENDPOINT = "https://s3.seokgukim.com"
+S3_BLOG_PATH = "/blog"
+S3_POST_DISCOVERY = "manifest"
